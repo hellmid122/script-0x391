@@ -4326,9 +4326,9 @@ function autoComplete(str,curText)
 end
 
 CMDs = {}
-CMDs[#CMDs + 1] = {NAME = 'fly / cfly [speed]', DESC = 'Makes you fly, bypassing some anti cheats by hellmid (works)'}
-CMDs[#CMDs + 1] = {NAME = 'unfly / unfly', DESC = 'Disables cfly'}
-CMDs[#CMDs + 1] = {NAME = 'flyspeed  / flyspeed [num]', DESC = 'Sets cfly speed'}
+CMDs[#CMDs + 1] = {NAME = 'cframefly / cfly [speed]', DESC = 'Makes you fly, bypassing some anti cheats (works on mobile)'}
+CMDs[#CMDs + 1] = {NAME = 'uncframefly / uncfly', DESC = 'Disables cfly'}
+CMDs[#CMDs + 1] = {NAME = 'cframeflyspeed  / cflyspeed [num]', DESC = 'Sets cfly speed'
 wait()
 
 for i = 1, #CMDs do
