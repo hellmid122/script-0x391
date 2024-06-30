@@ -48,7 +48,7 @@ local Button = MainTab:CreateButton({
 	Name = "AimLock",
 	Callback = function()
 		getgenv().OldAimPart = "HumanoidRootPart"
-		getgenv().AimPart = "Head" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
+		getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
 		getgenv().AimlockKey = "q"
 		getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
 		getgenv().ThirdPerson = true 
@@ -220,7 +220,25 @@ local Button = MainTab:CreateButton({
 	end,
 })
 
+
+
 local Button = MainTab:CreateButton({
+    Name = "Walk Faster",
+    Callback = function()
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+    -- The function that takes place when the button is pressed
+    end,
+ })
+
+local Button = MainTab:CreateButton({
+	Name = "Fly (Bypasses Anti Telport)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/yero0x"))()
+	end,
+})
+
+local Esp = Window:CreateTab("Esp", nil)
+local Button = Esp:CreateButton({
 	Name = "Esp Player",
 	Callback = function()
 		-- Settings
@@ -396,7 +414,8 @@ local Button = MainTab:CreateButton({
 	end,
 })
 
-local Button = MainTab:CreateButton({
+
+local Button = Esp:CreateButton({
 	Name = "Esp Atm",
 	Callback = function()
 		-- loadstring
@@ -549,9 +568,81 @@ local Button = MainTab:CreateButton({
 	end,
 })
 
-local Button = MainTab:CreateButton({
-	Name = "Fly (Bypasses Anti Telport)",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/yero0x"))()
-	end,
-})
+local AutoFarm = Window:CreateTab("AutoFarm", nil)
+local Button = AutoFarm:CreateButton({
+    Name = "Box Auto Farm",
+    Callback = function()
+        print("Loading")
+repeat wait() until game:IsLoaded()
+
+local ProximityPromptService = game:GetService("ProximityPromptService")
+
+if _G.hold then _G.hold:Disconnect() end
+_G.hold = ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
+    prompt.HoldDuration = 0.1;
+end)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+
+local truck = game.Workspace:WaitForChild("cratetruck2")
+
+local jobStart = game.Workspace:WaitForChild("PlaceHere")
+local startProx = jobStart:FindFirstChild("Attachment"):FindFirstChild("ProximityPrompt")
+
+local jobEnd = truck:WaitForChild("Model"):WaitForChild("ClickBox")
+local endProx = jobEnd:FindFirstChild("ProximityPrompt")
+
+local function walkTo(humanoid: Humanoid, position: Vector3, distance)
+if not distance then distance = 10 end
+
+humanoid:MoveTo(position)
+repeat humanoid:MoveTo(position) wait(0.25) until (humanoid.Parent.PrimaryPart.Position - position).Magnitude < distance
+
+return
+end
+
+local function loop(speed)
+--print("Loop")
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChild("Humanoid")
+
+--print("Running checks.")
+if not humanoid then warn("Could not find humanoid") return end
+if (character.PrimaryPart.Position - jobStart.Position).Magnitude > 15 then warn("Primary distance exceeds 15 studs") return end
+
+if speed then humanoid.WalkSpeed = 23 end
+
+walkTo(humanoid, jobStart.Position, startProx.MaxActivationDistance)
+
+camera.CameraSubject = jobStart
+repeat fireproximityprompt(startProx, 1) wait(startProx.HoldDuration+0.25) until player.Backpack:FindFirstChild("Crate")
+camera.CameraSubject = character.PrimaryPart
+player.Backpack:FindFirstChild("Crate").Parent = character
+
+if speed then humanoid.WalkSpeed = 23 end
+walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+walkTo(humanoid, jobEnd.Position - Vector3.new(0,0,5), endProx.MaxActivationDistance)
+
+camera.CameraSubject = jobEnd
+repeat fireproximityprompt(endProx, 1) wait(endProx.HoldDuration+0.25) until not character:FindFirstChild("Crate")
+camera.CameraSubject = character.PrimaryPart
+
+walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+
+humanoid.WalkSpeed = 10
+end
+
+print("Loaded")
+
+if _G.enabled then _G.enabled = not _G.enabled end
+
+_G.enabled = true
+local runSpeed = true
+while _G.enabled == true do task.wait()
+loop(runSpeed)
+end
+    -- The function that takes place when the button is pressed
+    end,
+ })
