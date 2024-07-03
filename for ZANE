@@ -1,0 +1,648 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "Yero Script v1.2",
+	LoadingTitle = "Yero Script",
+	LoadingSubtitle = "by hellmid",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "Yero Hub"
+	},
+	Discord = {
+		Enabled = true,
+		Invite = "mM8Z6TWBwr", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+		RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Yero Script",
+		Subtitle = "Key System",
+		Note = "Get Key At Dsicord Server",
+		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {"https://pastebin.com/raw/rbm9qbGc"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local MainTab = Window:CreateTab("Home", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "Enjoy!",
+   Content = "Thanks To Mr.Hellmid",
+   Duration = 6.5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Button = MainTab:CreateButton({
+	Name = "AimLock",
+	Callback = function()
+		getgenv().OldAimPart = "HumanoidRootPart"
+		getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
+		getgenv().AimlockKey = "q"
+		getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
+		getgenv().ThirdPerson = true 
+		getgenv().FirstPerson = true
+		getgenv().TeamCheck = false -- Check if Target is on your Team (True means it wont lock onto your teamates, false is vice versa) (Set it to false if there are no teams)
+		getgenv().PredictMovement = true -- Predicts if they are moving in fast velocity (like jumping) so the aimbot will go a bit faster to match their speed 
+		getgenv().PredictionVelocity = 5.100
+		getgenv().CheckIfJumped = true
+		getgenv().Smoothness = false
+		getgenv().SmoothnessAmount = 0.2
+
+		local Players, Uis, RService, SGui = game:GetService"Players", game:GetService"UserInputService", game:GetService"RunService", game:GetService"StarterGui";
+		local Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
+		local Aimlock, MousePressed, CanNotify = true, false, false;
+		local AimlockTarget;
+		local OldPre;
+
+
+
+		getgenv().WorldToViewportPoint = function(P)
+			return Camera:WorldToViewportPoint(P)
+		end
+
+		getgenv().WorldToScreenPoint = function(P)
+			return Camera.WorldToScreenPoint(Camera, P)
+		end
+
+		getgenv().GetObscuringObjects = function(T)
+			if T and T:FindFirstChild(getgenv().AimPart) and Client and Client.Character:FindFirstChild("Head") then 
+				local RayPos = workspace:FindPartOnRay(RNew(
+					T[getgenv().AimPart].Position, Client.Character.Head.Position)
+				)
+				if RayPos then return RayPos:IsDescendantOf(T) end
+			end
+		end
+
+		getgenv().GetNearestTarget = function()
+			-- Credits to whoever made this, i didnt make it, and my own mouse2plr function kinda sucks
+			local players = {}
+			local PLAYER_HOLD  = {}
+			local DISTANCES = {}
+			for i, v in pairs(Players:GetPlayers()) do
+				if v ~= Client then
+					table.insert(players, v)
+				end
+			end
+			for i, v in pairs(players) do
+				if v.Character ~= nil then
+					local AIM = v.Character:FindFirstChild("Head")
+					if getgenv().TeamCheck == true and v.Team ~= Client.Team then
+						local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+						local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
+						local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
+						local DIFF = math.floor((POS - AIM.Position).magnitude)
+						PLAYER_HOLD[v.Name .. i] = {}
+						PLAYER_HOLD[v.Name .. i].dist= DISTANCE
+						PLAYER_HOLD[v.Name .. i].plr = v
+						PLAYER_HOLD[v.Name .. i].diff = DIFF
+						table.insert(DISTANCES, DIFF)
+					elseif getgenv().TeamCheck == false and v.Team == Client.Team then 
+						local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+						local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
+						local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
+						local DIFF = math.floor((POS - AIM.Position).magnitude)
+						PLAYER_HOLD[v.Name .. i] = {}
+						PLAYER_HOLD[v.Name .. i].dist= DISTANCE
+						PLAYER_HOLD[v.Name .. i].plr = v
+						PLAYER_HOLD[v.Name .. i].diff = DIFF
+						table.insert(DISTANCES, DIFF)
+					end
+				end
+			end
+
+			if unpack(DISTANCES) == nil then
+				return nil
+			end
+
+			local L_DISTANCE = math.floor(math.min(unpack(DISTANCES)))
+			if L_DISTANCE > getgenv().AimRadius then
+				return nil
+			end
+
+			for i, v in pairs(PLAYER_HOLD) do
+				if v.diff == L_DISTANCE then
+					return v.plr
+				end
+			end
+			return nil
+		end
+
+		Mouse.KeyDown:Connect(function(a)
+			if not (Uis:GetFocusedTextBox()) then 
+				if a == AimlockKey and AimlockTarget == nil then
+					pcall(function()
+						if MousePressed ~= true then MousePressed = true end 
+						local Target;Target = GetNearestTarget()
+						if Target ~= nil then 
+							AimlockTarget = Target
+						end
+					end)
+				elseif a == AimlockKey and AimlockTarget ~= nil then
+					if AimlockTarget ~= nil then AimlockTarget = nil end
+					if MousePressed ~= false then 
+						MousePressed = false 
+					end
+				end
+			end
+		end)
+
+		RService.RenderStepped:Connect(function()
+			if getgenv().ThirdPerson == true and getgenv().FirstPerson == true then 
+				if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 or (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
+					CanNotify = true 
+				else 
+					CanNotify = false 
+				end
+			elseif getgenv().ThirdPerson == true and getgenv().FirstPerson == false then 
+				if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 then 
+					CanNotify = true 
+				else 
+					CanNotify = false 
+				end
+			elseif getgenv().ThirdPerson == false and getgenv().FirstPerson == true then 
+				if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
+					CanNotify = true 
+				else 
+					CanNotify = false 
+				end
+			end
+			if Aimlock == true and MousePressed == true then 
+				if AimlockTarget and AimlockTarget.Character and AimlockTarget.Character:FindFirstChild(getgenv().AimPart) then 
+					if getgenv().FirstPerson == true then
+						if CanNotify == true then
+							if getgenv().PredictMovement == true then
+								if getgenv().Smoothness == true then
+									--// The part we're going to lerp/smoothen \\--
+									local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position + AimlockTarget.Character[getgenv().AimPart].Velocity/PredictionVelocity)
+
+									--// Making it work \\--
+									Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
+								else
+									Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position + AimlockTarget.Character[getgenv().AimPart].Velocity/PredictionVelocity)
+								end
+							elseif getgenv().PredictMovement == false then 
+								if getgenv().Smoothness == true then
+									--// The part we're going to lerp/smoothen \\--
+									local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position)
+
+									--// Making it work \\--
+									Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
+								else
+									Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position)
+								end
+							end
+						end
+					end
+				end
+			end
+			if CheckIfJumped == true then
+				if AimlockTarget.Character.HuDDDDDDDDDDWmanoid.FloorMaterial == Enum.Material.Air then
+
+					getgenv().AimPart = "HumanoidRootPart"
+				else
+					getgenv().AimPart = getgenv().OldAimPart
+
+				end
+			end
+		end)
+	end,
+})
+
+
+
+local Button = MainTab:CreateButton({
+    Name = "Walk Faster",
+    Callback = function()
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+    -- The function that takes place when the button is pressed
+    end,
+ })
+
+local Button = MainTab:CreateButton({
+	Name = "Fly (Bypasses Anti Telport)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/yero0x"))()
+	end,
+})
+
+local Esp = Window:CreateTab("Esp", nil)
+local Button = Esp:CreateButton({
+	Name = "Esp Player",
+	Callback = function()
+		-- Settings
+		local Settings = {
+			Box_Color = Color3.fromRGB(255, 0, 0),
+			Box_Thickness = 2,
+			Team_Check = false,
+			Team_Color = false,
+			Autothickness = true
+		}
+
+		--Locals
+		local Space = game:GetService("Workspace")
+		local Player = game:GetService("Players").LocalPlayer
+		local Camera = Space.CurrentCamera
+
+		-- Locals
+		local function NewLine(color, thickness)
+			local line = Drawing.new("Line")
+			line.Visible = false
+			line.From = Vector2.new(0, 0)
+			line.To = Vector2.new(0, 0)
+			line.Color = color
+			line.Thickness = thickness
+			line.Transparency = 1
+			return line
+		end
+
+		local function Vis(lib, state)
+			for i, v in pairs(lib) do
+				v.Visible = state
+			end
+		end
+
+		local function Colorize(lib, color)
+			for i, v in pairs(lib) do
+				v.Color = color
+			end
+		end
+
+		local Black = Color3.fromRGB(0, 0, 0)
+
+		local function Rainbow(lib, delay)
+			for hue = 0, 1, 1/100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 do
+				local color = Color3.fromHSV(hue, 0.6, 1)
+				Colorize(lib, color)
+				wait(delay)
+			end
+			Rainbow(lib)
+		end
+		--Main Draw Function
+		local function Main(plr)
+			repeat wait() until plr.Character ~= nil and plr.Character:FindFirstChild("Humanoid") ~= nil
+			local R15
+			if plr.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+				R15 = true
+			else 
+				R15 = false
+			end
+			local Library = {
+				TL1 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+				TL2 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+
+				TR1 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+				TR2 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+
+				BL1 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+				BL2 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+
+				BR1 = NewLine(Settings.Box_Color, Settings.Box_Thickness),
+				BR2 = NewLine(Settings.Box_Color, Settings.Box_Thickness)
+			}
+			coroutine.wrap(Rainbow)(Library, 0.15)
+			local oripart = Instance.new("Part")
+			oripart.Parent = Space
+			oripart.Transparency = 1
+			oripart.CanCollide = false
+			oripart.Size = Vector3.new(1, 1, 1)
+			oripart.Position = Vector3.new(0, 0, 0)
+			--Updater Loop
+			local function Updater()
+				local c 
+				c = game:GetService("RunService").RenderStepped:Connect(function()
+					if plr.Character ~= nil and plr.Character:FindFirstChild("Humanoid") ~= nil and plr.Character:FindFirstChild("HumanoidRootPart") ~= nil and plr.Character.Humanoid.Health > 0 and plr.Character:FindFirstChild("Head") ~= nil then
+						local Hum = plr.Character
+						local HumPos, vis = Camera:WorldToViewportPoint(Hum.HumanoidRootPart.Position)
+						if vis then
+							oripart.Size = Vector3.new(Hum.HumanoidRootPart.Size.X, Hum.HumanoidRootPart.Size.Y*1.5, Hum.HumanoidRootPart.Size.Z)
+							oripart.CFrame = CFrame.new(Hum.HumanoidRootPart.CFrame.Position, Camera.CFrame.Position)
+							local SizeX = oripart.Size.X
+							local SizeY = oripart.Size.Y
+							local TL = Camera:WorldToViewportPoint((oripart.CFrame * CFrame.new(SizeX, SizeY, 0)).p)
+							local TR = Camera:WorldToViewportPoint((oripart.CFrame * CFrame.new(-SizeX, SizeY, 0)).p)
+							local BL = Camera:WorldToViewportPoint((oripart.CFrame * CFrame.new(SizeX, -SizeY, 0)).p)
+							local BR = Camera:WorldToViewportPoint((oripart.CFrame * CFrame.new(-SizeX, -SizeY, 0)).p)
+
+							if Settings.Team_Check then
+								if plr.TeamColor == Player.TeamColor then
+									Colorize(Library, Color3.fromRGB(0, 255, 0))
+								else 
+									Colorize(Library, Color3.fromRGB(255, 0, 0))
+								end
+							end
+
+							if Settings.Team_Color then
+								Colorize(Library, plr.TeamColor.Color)
+							end
+
+							local ratio = (Camera.CFrame.p - Hum.HumanoidRootPart.Position).magnitude
+							local offset = math.clamp(1/ratio*750, 2, 300)
+
+							Library.TL1.From = Vector2.new(TL.X, TL.Y)
+							Library.TL1.To = Vector2.new(TL.X + offset, TL.Y)
+							Library.TL2.From = Vector2.new(TL.X, TL.Y)
+							Library.TL2.To = Vector2.new(TL.X, TL.Y + offset)
+
+							Library.TR1.From = Vector2.new(TR.X, TR.Y)
+							Library.TR1.To = Vector2.new(TR.X - offset, TR.Y)
+							Library.TR2.From = Vector2.new(TR.X, TR.Y)
+							Library.TR2.To = Vector2.new(TR.X, TR.Y + offset)
+
+							Library.BL1.From = Vector2.new(BL.X, BL.Y)
+							Library.BL1.To = Vector2.new(BL.X + offset, BL.Y)
+							Library.BL2.From = Vector2.new(BL.X, BL.Y)
+							Library.BL2.To = Vector2.new(BL.X, BL.Y - offset)
+
+							Library.BR1.From = Vector2.new(BR.X, BR.Y)
+							Library.BR1.To = Vector2.new(BR.X - offset, BR.Y)
+							Library.BR2.From = Vector2.new(BR.X, BR.Y)
+							Library.BR2.To = Vector2.new(BR.X, BR.Y - offset)
+
+							Vis(Library, true)
+
+							if Settings.Autothickness then
+								local distance = (Player.Character.HumanoidRootPart.Position - oripart.Position).magnitude
+								local value = math.clamp(1/distance*100, 1, 4) --0.1 is min thickness, 6 is max
+								for u, x in pairs(Library) do
+									x.Thickness = value
+								end
+							else 
+								for u, x in pairs(Library) do
+									x.Thickness = Settings.Box_Thickness
+								end
+							end
+						else 
+							Vis(Library, false)
+						end
+					else 
+						Vis(Library, false)
+						if game:GetService("Players"):FindFirstChild(plr.Name) == nil then
+							for i, v in pairs(Library) do
+								v:Remove()
+								oripart:Destroy()
+							end
+							c:Disconnect()
+						end
+					end
+				end)
+			end
+			coroutine.wrap(Updater)()
+		end
+
+		-- Draw Boxes
+		for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name ~= Player.Name then
+				coroutine.wrap(Main)(v)
+			end
+		end
+
+		game:GetService("Players").PlayerAdded:Connect(function(newplr)
+			coroutine.wrap(Main)(newplr)
+		end)
+	end,
+})
+
+
+local Button = Esp:CreateButton({
+	Name = "Esp Atm",
+	Callback = function()
+		-- loadstring
+		local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+
+		-- config
+		ESP.Players = false
+		ESP.Boxes = false
+		ESP.Names = true
+		ESP:Toggle(true)
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM5", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM1", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM12", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM2", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM15", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM3", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM13", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM4", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM14", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM5", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM11", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM6", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM10", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM7", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM9", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM8", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM1", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM9", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM2", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM10", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM3", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM11", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM4", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM12", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM7", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM13", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM8", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM14", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM6", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM15", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+	end,
+})
+
+local AutoFarm = Window:CreateTab("AutoFarm", nil)
+local Button = AutoFarm:CreateButton({
+    Name = "Box Auto Farm",
+    Callback = function()
+        print("Loading")
+repeat wait() until game:IsLoaded()
+
+local ProximityPromptService = game:GetService("ProximityPromptService")
+
+if _G.hold then _G.hold:Disconnect() end
+_G.hold = ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
+    prompt.HoldDuration = 0.1;
+end)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+
+local truck = game.Workspace:WaitForChild("cratetruck2")
+
+local jobStart = game.Workspace:WaitForChild("PlaceHere")
+local startProx = jobStart:FindFirstChild("Attachment"):FindFirstChild("ProximityPrompt")
+
+local jobEnd = truck:WaitForChild("Model"):WaitForChild("ClickBox")
+local endProx = jobEnd:FindFirstChild("ProximityPrompt")
+
+local function walkTo(humanoid: Humanoid, position: Vector3, distance)
+if not distance then distance = 10 end
+
+humanoid:MoveTo(position)
+repeat humanoid:MoveTo(position) wait(0.25) until (humanoid.Parent.PrimaryPart.Position - position).Magnitude < distance
+
+return
+end
+
+local function loop(speed)
+--print("Loop")
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChild("Humanoid")
+
+--print("Running checks.")
+if not humanoid then warn("Could not find humanoid") return end
+if (character.PrimaryPart.Position - jobStart.Position).Magnitude > 15 then warn("Primary distance exceeds 15 studs") return end
+
+if speed then humanoid.WalkSpeed = 23 end
+
+walkTo(humanoid, jobStart.Position, startProx.MaxActivationDistance)
+
+camera.CameraSubject = jobStart
+repeat fireproximityprompt(startProx, 1) wait(startProx.HoldDuration+0.25) until player.Backpack:FindFirstChild("Crate")
+camera.CameraSubject = character.PrimaryPart
+player.Backpack:FindFirstChild("Crate").Parent = character
+
+if speed then humanoid.WalkSpeed = 23 end
+walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+walkTo(humanoid, jobEnd.Position - Vector3.new(0,0,5), endProx.MaxActivationDistance)
+
+camera.CameraSubject = jobEnd
+repeat fireproximityprompt(endProx, 1) wait(endProx.HoldDuration+0.25) until not character:FindFirstChild("Crate")
+camera.CameraSubject = character.PrimaryPart
+
+walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+
+humanoid.WalkSpeed = 10
+end
+
+print("Loaded")
+
+if _G.enabled then _G.enabled = not _G.enabled end
+
+_G.enabled = true
+local runSpeed = true
+while _G.enabled == true do task.wait()
+loop(runSpeed)
+end
+    -- The function that takes place when the button is pressed
+    end,
+ })
