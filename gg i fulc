@@ -658,13 +658,3 @@ local Button = AutoFarm:CreateButton({
 })
 
 
-local Misc = Window:CreateTab("Other", nil)
-local Button = Misc:CreateButton({
-   Name = "Instant proximity (Instant Loot)",
-   Callback = function()
-   if _G.hold then _G.hold:Disconnect() end
-_G.hold = ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
-    prompt.HoldDuration = 0;)
-   -- The function that takes place when the button is pressed
-
-})
