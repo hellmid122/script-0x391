@@ -1,4 +1,4 @@
-if game.Players.LocalPlayer.UserId ==  --4067054911 or --3473485856 or --3314130899 then
+if game.Players.LocalPlayer.UserId ==  --4067054911 or --3473485856 or --3314130899 or --6209974347 or --2697100161 then
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
@@ -630,8 +630,8 @@ walkTo(humanoid, jobEnd.Position - Vector3.new(0,0,5), endProx.MaxActivationDist
 camera.CameraSubject = jobEnd
 repeat fireproximityprompt(endProx, 1) wait(endProx.HoldDuration+0.25) until not character:FindFirstChild("Crate")
 camera.CameraSubject = character.PrimaryPart
-
 walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+
 
 humanoid.WalkSpeed = 10
 end
