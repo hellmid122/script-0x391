@@ -10,7 +10,8 @@ if nigga == "derrick0119" or
    nigga == "vhill_ej" or
    nigga == "MASTERGAMER10236" or
    nigga == "Mikey_bandooo" or
-   nigga == "icantcompriehaned" then
+   nigga == "icantcompriehaned" or
+   nigga == "JustinBiever48417" then
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
