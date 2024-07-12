@@ -1,5 +1,3 @@
-if game.Players.LocalPlayer.UserId ==  --10957864 then
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
