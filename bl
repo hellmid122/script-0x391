@@ -45,7 +45,7 @@ Rayfield:Notify({
 })
 
 local Button = MainTab:CreateButton({
-	Name = "AimLock",
+	Name = "AimLock (Q To Lock)",
 	Callback = function()
 		getgenv().OldAimPart = "HumanoidRootPart"
 		getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
