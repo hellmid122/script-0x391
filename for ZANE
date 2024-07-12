@@ -1,16 +1,16 @@
-local names = {
-    "JustinBiever32287",
-    "derrick0119",
-    "chaytenhillontop",
-    "maxy9987",
-    "1_smile2",
-    "Alexg2108",
-    "lilhackia",
-    "11tide11",
-    "Nicolaim12345",
-    "vhill_ej",
-    "icantcompriehaned"
-}
+local nigga = game.Players.LocalPlayer.Name
+if nigga == "derrick0119" or
+   nigga == "chaytenhillontop" or
+   nigga == "maxy9987" or
+   nigga == "1_smile2" or
+   nigga == "Alexg2108" or
+   nigga == "lilhackia" or
+   nigga == "11tide11" or
+   nigga == "Nicolaim12345" or
+   nigga == "vhill_ej" or
+   nigga == "MASTERGAMER10236" or
+   nigga == "Mikey_bandooo" or
+   nigga == "icantcompriehaned" then
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
