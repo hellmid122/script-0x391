@@ -1,4 +1,4 @@
-if game.Players.LocalPlayer.Username== {"icantcompriehaned"} then
+if game.Players.LocalPlayer.Username== {"maxy9987"} then
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
