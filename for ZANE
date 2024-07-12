@@ -1,5 +1,3 @@
-if game.Players.LocalPlayer.Userld == --7874596 or --4067054911 or --447619587 then 
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
