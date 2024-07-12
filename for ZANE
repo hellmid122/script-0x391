@@ -1,3 +1,17 @@
+local names = {
+    "JustinBiever32287",
+    "derrick0119",
+    "chaytenhillontop",
+    "maxy9987",
+    "1_smile2",
+    "Alexg2108",
+    "lilhackia",
+    "11tide11",
+    "Nicolaim12345",
+    "vhill_ej",
+    "icantcompriehaned"
+}
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
