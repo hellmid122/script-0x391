@@ -654,3 +654,16 @@ local Button = AutoFarm:CreateButton({
    -- The function that takes place when the button is pressed
    end,
 })
+
+
+local Misc = Window:CreateTab("Misc", nil) -- Title, Image
+local Button = Tab:CreateButton({
+   Name = "Small Server Finder",
+   Callback = function()
+           local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
+
+module:Teleport(game.PlaceId)
+
+   -- The function that takes place when the button is pressed
+   end,
+})
