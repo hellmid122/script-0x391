@@ -1,1 +1,655 @@
-([[This file was protected with MoonSec V3]]):gsub('.+', (function(a) _hvDjkJBSAVaZ = a; end)); return(function(h,...)local t;local a;local d;local o;local s;local r;local e=24915;local n=0;local l={};while n<617 do n=n+1;while n<0x226 and e%0x920<0x490 do n=n+1 e=(e-195)%7407 local f=n+e if(e%0x1210)>=0x908 then e=(e*0x1f9)%0x6f80 while n<0x222 and e%0x352c<0x1a96 do n=n+1 e=(e*33)%45556 local o=n+e if(e%0x24b6)<0x125b then e=(e+0x309)%0x69b local e=79436 if not l[e]then l[e]=0x1 a=string;end elseif e%2~=0 then e=(e+0x1a3)%0x9886 local e=497 if not l[e]then l[e]=0x1 t=getfenv and getfenv();end else e=(e*0x93)%0x7d4 n=n+1 local e=12915 if not l[e]then l[e]=0x1 t=(not t)and _ENV or t;end end end elseif e%2~=0 then e=(e+0x36c)%0x716a while n<0x1a1 and e%0x385c<0x1c2e do n=n+1 e=(e+40)%49991 local f=n+e if(e%0xcaa)>=0x655 then e=(e+0x99)%0x42c9 local e=29439 if not l[e]then l[e]=0x1 s=tonumber;end elseif e%2~=0 then e=(e-0x349)%0x223 local e=57472 if not l[e]then l[e]=0x1 r="\4\8\116\111\110\117\109\98\101\114\115\70\87\98\107\65\100\118\0\6\115\116\114\105\110\103\4\99\104\97\114\118\113\102\95\118\65\108\79\0\6\115\116\114\105\110\103\3\115\117\98\120\71\65\97\86\121\76\98\0\6\115\116\114\105\110\103\4\98\121\116\101\67\100\83\73\74\104\120\85\0\5\116\97\98\108\101\6\99\111\110\99\97\116\107\99\72\70\89\74\101\106\0\5\116\97\98\108\101\6\105\110\115\101\114\116\98\74\79\88\122\82\83\108\5";end else e=(e-0x379)%0x562c n=n+1 local e=86596 if not l[e]then l[e]=0x1 o=function(l)local e=0x01 local function n(n)e=e+n return l:sub(e-n,e-0x01)end while true do local l=n(0x01)if(l=="\5")then break end local e=a.byte(n(0x01))local e=n(e)if l=="\2"then e=d.sFWbkAdv(e)elseif l=="\3"then e=e~="\0"elseif l=="\6"then t[e]=function(e,n)return h(8,nil,h,n,e)end elseif l=="\4"then e=t[e]elseif l=="\0"then e=t[e][n(a.byte(n(0x01)))];end local n=n(0x08)d[n]=e end end end end end else e=(e+0x21e)%0xb8f3 n=n+1 while n<0x28e and e%0x1ac8<0xd64 do n=n+1 e=(e+423)%7212 local t=n+e if(e%0x438e)>0x21c7 then e=(e+0x17c)%0x7589 local e=62197 if not l[e]then l[e]=0x1 end elseif e%2~=0 then e=(e*0x9c)%0x8f79 local e=61235 if not l[e]then l[e]=0x1 d={};end else e=(e-0x13e)%0x9bf2 n=n+1 local e=90681 if not l[e]then l[e]=0x1 end end end end end e=(e+306)%3016 end o(r);local e={};for n=0x0,0xff do local l=d.vqf_vAlO(n);e[n]=l;e[l]=n;end local function c(n)return e[n];end local r=(function(r,o)local f,l=0x01,0x10 local n={{},{},{}}local t=-0x01 local e=0x01 local a=r while true do n[0x03][d.xGAaVyLb(o,e,(function()e=f+e return e-0x01 end)())]=(function()t=t+0x01 return t end)()if t==(0x0f)then t=""l=0x000 break end end local t=#o while e<t+0x01 do n[0x02][l]=d.xGAaVyLb(o,e,(function()e=f+e return e-0x01 end)())l=l+0x01 if l%0x02==0x00 then l=0x00 d.bJOXzRSl(n[0x01],(c((((n[0x03][n[0x02][0x00]]or 0x00)*0x10)+(n[0x03][n[0x02][0x01]]or 0x00)+a)%0x100)));a=r+a;end end return d.kcHFYJej(n[0x01])end);o(r(47,"TqM9vi1pzk#P<xtbx1"));o(r(143,"{D<NPh?,a+&3*o.),D.a*?Na&,l)ah.))o*.hI3+<o+N)?a+oD?33?P+&)3&<*na?*o3h,*aPN3hD++Poh?.*<Nhh?*3&,D&a<)a?)33N,&<DaaD)h,o)&)P?3P+33<&+<Ga,<aDh&3)PN&ND++,.3?**3N<3%<<3N&&D))+h..<P,hh<o+?vaa*)h?aoa<D33L,+o)h?Na<)3oNN?3?<_a+M+?,.3P+33N?&:<Ph))PP+.?h?+3N&Na&*?*.*h3ooP+3o.)&N_&??o,?&&3P&&,3+<&Q.?+.<h.*<<h+D<<+<VP,a*,.hhh).3W)+,&)+?N3&<,3,*<N,DPaS)h?,o?N.3PD.+3.aaPo*Nh&PN&&<3w<?;??Po?hD33*o&oD,a&.*h)oaP53DN&+<D,,ooaPh?&oo3o<,+&)*?).ah**<ND&.<P++%#h&,&.**aN3&ND++_)Nhho?ND3+gNao.hD+a*?&*oPh&)D.&>7+,<)Ph*&&<P&.<+<h+&,Po+ho*<oL&<D+ao).,<*N<.+hD.&<:za*)&)."));local e=(-77+(function()local l,e=0,1;(function(e,n)n(e(n,e),e(n,e and e))end)(function(n,t)if l>117 then return t end l=l+1 e=(e-570)%18585 if(e%592)>=296 then return t(n(t,n),n(n,t))else return n end return n end,function(n,t)if l>159 then return t end l=l+1 e=(e-41)%1805 if(e%858)<429 then return n(t(n,n),n(n and t,t))else return n end return t end)return e;end)())local c=d.ncamrvlU or d.bbzaujTP;local m=(getfenv)or(function()return _ENV end);local y=1;local a=4;local o=3;local t=2;local function b(j,...)local f=r(e,"c1gHe:^_KjpqOG/BOpK^ejYOG1qj::1KGqBgOjKG:pOpGHjj:B1qjjqH^2H:p:qK_GHGw:qj_pe/EgOeeH:G1g/.j_1g{g/_pp^O1e/jppgpgHOH::gBGjjO:B^B:e1_GjK1:^1_G^KG_1Hg/Oqe_*HBG_qq_jHOQQOO^g:K1qGOgBBeqH_^Hj^HgX/BppXp1eK/:11eHBh/G1jN:^/EjK:q^11H/O^^^gg_B:pO_OgOCgOH_KeKBOOqKG:^bpG^jB1O1e/Hpegjg:/:pB_gH^B:qHeHX_OpKpj1ee1^G?jp^1GGpHp/gOB:qZ_1_ggjBeqOetHps^OOeg1gGHO7^pHpBe_eHBBKqq_/pG_HgK//ObKee:BBO_KH/1pj^:gK/qB^/:pK^_Q1/gqe?:GHKjeOsBH1BGO/:BeKyOp/^jHG//O^je:kqj_OHBugO:j_eqU/G1je:_1pGGpi^eg^/jpOK1eOB:qK_qe5i1OeK_:Og^G}jH:^gVGOjB^geqBppq^/H1Bpq__qHGE1OHKp:1#OOBjg:q1KGOj/^:gO/_pp^GH_BHq__jHO,OOgK:eKYOO/j1:egjGqjG^;gH/qpj^OgBoeO__KHOB/OeKee_zp/GpH:H1_GjjG:BgK/:qpK1g/Beqe_qHpBGO+KH:gSjOGKB::1:GKjq:/gG/ep_^pgGB7q:_^Hj.:qBKge:xjOqKB:11e/Hjp:Gg)/ep^^jgO");local n=0;d.vwjtDlOQ(function()d.gYTtstwU()n=n+1 end)local function e(e,l)if l then return n end;n=e+n;end local l,n,u=h(0,h,e,f,d.CdSIJhxU);local function r()local l,n=d.CdSIJhxU(f,e(1,3),e(5,6)+2);e(2);return(n*256)+l;end;local p=true;local p=0 local function _()local e=n();local n=n();local o=1;local t=(l(n,1,20)*(2^32))+e;local e=l(n,21,31);local n=((-1)^l(n,32));if(e==0)then if(t==p)then return n*0;else e=1;o=0;end;elseif(e==2047)then return(t==0)and(n*(1/0))or(n*(0/0));end;return d.rqIrMrYV(n,e-1023)*(o+(t/(2^52)));end;local b=n;local function g(n)local l;if(not n)then n=b();if(n==0)then return'';end;end;l=d.xGAaVyLb(f,e(1,3),e(5,6)+n-1);e(n)local e=""for n=(1+p),#l do e=e..d.xGAaVyLb(l,n,n)end return e;end;local p=#d.sOzaIGlc(s('\49.\48'))~=1 local e=n;local function z(...)return{...},d.ldulIRku('#',...)end local function b()local s={};local c={};local e={};local h={s,c,nil,e};local e=n()local f={}for t=1,e do local l=u();local n;if(l==3)then n=(u()~=#{});elseif(l==0)then local e=_();if p and d.uXhVLYZz(d.sOzaIGlc(e),'.(\48+)$')then e=d.RLBZmZur(e);end n=e;elseif(l==2)then n=g();end;f[t]=n;end;for e=1,n()do c[e-(#{1})]=b();end;h[3]=u();for h=1,n()do local e=u();if(l(e,1,1)==0)then local d=l(e,2,3);local c=l(e,4,6);local e={r(),r(),nil,nil};if(d==0)then e[o]=r();e[a]=r();elseif(d==#{1})then e[o]=n();elseif(d==j[2])then e[o]=n()-(2^16)elseif(d==j[3])then e[o]=n()-(2^16)e[a]=r();end;if(l(c,1,1)==1)then e[t]=f[e[t]]end if(l(c,2,2)==1)then e[o]=f[e[o]]end if(l(c,3,3)==1)then e[a]=f[e[a]]end s[h]=e;end end;return h;end;local function k(l,n,e)local t=n;local t=e;return s(d.uXhVLYZz(d.uXhVLYZz(({d.vwjtDlOQ(l)})[2],n),e))end local function ee(g,e,u)local function k(...)local f,k,s,ee,j,l,r,b,_,p,m,n;local e=0;while-1<e do if 3<=e then if e>4 then if e>1 then repeat if e<6 then n=h(7);break;end;e=-2;until true;else n=h(7);end else if 3==e then b={};_={...};else p=d.ldulIRku('#',...)-1;m={};end end else if e>=1 then if 1~=e then l=-41;r=-1;else s=h(6,10,3,50,g);j=z ee=0;end else f=h(6,28,1,99,g);k=h(6,29,2,37,g);end end e=e+1;end;for e=0,p do if(e>=s)then b[e-s]=_[e+1];else n[e]=_[e+1];end;end;local e=p-s+1 local e;local d;local function h(...)while true do end end while true do if l<-40 then l=l+42 end e=f[l];d=e[y];if 11<d then if 17>=d then if 14<d then if 16<=d then if d>15 then for l=46,76 do if 17~=d then n[e[t]]=u[e[o]];break;end;local t=e[t];local l=n[e[o]];n[t+1]=l;n[t]=l[e[a]];break;end;else local l=e[t];local t=n[e[o]];n[l+1]=t;n[l]=t[e[a]];end else local e=e[t]n[e]=n[e](c(n,e+1,r))end else if d>=13 then if 11<=d then repeat if d~=14 then do return end;break;end;if(n[e[t]]==e[a])then l=l+1;else l=e[o];end;until true;else do return end;end else local d,r,f,a,c;local l=0;while l>-1 do if l<3 then if 1<=l then if 0~=l then for e=25,73 do if 1~=l then f=o;break;end;r=t;break;end;else r=t;end else d=e;end else if l>=5 then if l>1 then for e=17,74 do if l~=6 then n(c,a);break;end;l=-2;break;end;else n(c,a);end else if-1~=l then repeat if l~=4 then a=d[f];break;end;c=d[r];until true;else a=d[f];end end end l=l+1 end end end else if 21<=d then if 21>=d then do return end;else if d>=19 then repeat if d~=23 then local l=e[t]local t,e=j(n[l](c(n,l+1,e[o])))r=e+l-1 local e=0;for l=l,r do e=e+1;n[l]=t[e];end;break;end;n[e[t]]();until true;else n[e[t]]();end end else if 19>d then local d,s,p,g,h;n[e[t]]=u[e[o]];l=l+1;e=f[l];d=e[t];s=n[e[o]];n[d+1]=s;n[d]=s[e[a]];l=l+1;e=f[l];n(e[t],e[o]);l=l+1;e=f[l];d=e[t]p,g=j(n[d](c(n,d+1,e[o])))r=g+d-1 h=0;for e=d,r do h=h+1;n[e]=p[h];end;l=l+1;e=f[l];d=e[t]n[d]=n[d](c(n,d+1,r))l=l+1;e=f[l];n[e[t]]();l=l+1;e=f[l];do return end;else if d==20 then n[e[t]]=(e[o]~=0);else local d,r,c,f,a;local l=0;while l>-1 do if 2<l then if 4>=l then if 4==l then a=d[r];else f=d[c];end else if 1~=l then for e=17,54 do if l<6 then n(a,f);break;end;l=-2;break;end;else l=-2;end end else if 1>l then d=e;else if 1~=l then c=o;else r=t;end end end l=l+1 end end end end end else if 5>=d then if d<3 then if 1<=d then if d==2 then n[e[t]]=(e[o]~=0);else n[e[t]]=u[e[o]];end else for d=0,3 do if 1<d then if-1~=d then for r=13,89 do if 2~=d then if(n[e[t]]==e[a])then l=l+1;else l=e[o];end;break;end;n[e[t]]=u[e[o]];l=l+1;e=f[l];break;end;else if(n[e[t]]==e[a])then l=l+1;else l=e[o];end;end else if 0==d then n[e[t]]=(e[o]~=0);l=l+1;e=f[l];else u[e[o]]=n[e[t]];l=l+1;e=f[l];end end end end else if d<=3 then u[e[o]]=n[e[t]];else if 4==d then local t=e[t];local l=n[e[o]];n[t+1]=l;n[t]=l[e[a]];else local l=e[t]local t,e=j(n[l](c(n,l+1,e[o])))r=e+l-1 local e=0;for l=l,r do e=e+1;n[l]=t[e];end;end end end else if 8>=d then if 6>=d then u[e[o]]=n[e[t]];else if 5<d then repeat if d<8 then n[e[t]]();break;end;l=e[o];until true;else l=e[o];end end else if d<=9 then if(n[e[t]]==e[a])then l=l+1;else l=e[o];end;else if 8~=d then repeat if d~=11 then l=e[o];break;end;local e=e[t]n[e]=n[e](c(n,e+1,r))until true;else local e=e[t]n[e]=n[e](c(n,e+1,r))end end end end end l=1+l;end;end;return k end;local o=0xff;local h={};local a=(1);local t='';(function(n)local l=n local r=0x00 local e=0x00 l={(function(d)if r>0x23 then return d end r=r+1 e=(e+0x4a3-d)%0x28 return(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x51);o[2]=(o[2]*(k(function()h()end,c(t))-k(o[1],c(t))))+1;h[a]={};o=o[2];a=a+o;end return true end)'znmRh'and l[0x2](0x263+d))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xdf);end return true end)'GgxeI'and l[0x1](d+0x1c2))or(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xd3);end return true end)'rvrOk'and l[0x3](d+0x300))or d end),(function(d)if r>0x2c then return d end r=r+1 e=(e+0xda4-d)%0x4f return(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x7f);t='\37';o={function()o()end};t=t..'\100\43';end return true end)'rZyhj'and l[0x3](0x16e+d))or(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xd3);end return true end)'GWAqm'and l[0x2](d+0x3aa))or(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x52);end return true end)'PtRCY'and l[0x1](d+0x19e))or d end),(function(f)if r>0x30 then return f end r=r+1 e=(e+0x465-f)%0xe return(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xe9);h[a]=m();a=a+o;end return true end)'exQyI'and l[0x2](0x15d+f))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x60);end return true end)'UMcEW'and l[0x3](f+0x1ec))or(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x47);t={t..'\58 a',t};h[a]=b();a=a+((not d.eWyPySuj)and 1 or 0);t[1]='\58'..t[1];o[2]=0xff;end return true end)'VbbQh'and l[0x1](f+0x35b))or f end)}l[0x2](0x506)end){};local e=ee(c(h));return e(...);end return b((function()local n={}local e=0x01;local l;if d.eWyPySuj then l=d.eWyPySuj(b)else l=''end if d.uXhVLYZz(l,d.OZTYQTkw)then e=e+0;else e=e+1;end n[e]=0x02;n[n[e]+0x01]=0x03;return n;end)(),...)end)((function(l,e,n,t,o,d)local d;if l>3 then if 6<=l then if 6<l then if 7<l then do return n(l,nil,n);end else do return setmetatable({},{['__\99\97\108\108']=function(e,t,l,o,n)if n then return e[n]elseif o then return e else e[t]=l end end})end end else do return o[n]end;end else if 4<l then local l=t;do return function()local e=e(n,l(l,l),l(l,l));l(1);return e;end;end;else local l=t;local a,r,d=o(2);do return function()local t,n,e,o=e(n,l(l,l),l(l,l)+3);l(4);return(o*a)+(e*r)+(n*d)+t;end;end;end end else if l>=2 then if l==2 then do return 16777216,65536,256 end;else do return e(1),e(4,o,t,n,e),e(5,o,t,n)end;end else if-1<l then for d=31,79 do if 0~=l then do return function(n,e,l)if l then local e=(n/2^(e-1))%2^((l-1)-(e-1)+1);return e-e%1;else local e=2^(e-1);return(n%(e+e)>=e)and 1 or 0;end;end;end;break;end;do return e(1),e(4,o,t,n,e),e(5,o,t,n)end;break;end;else do return e(1),e(4,o,t,n,e),e(5,o,t,n)end;end end end end),...)
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "Yero Script v1.2",
+	LoadingTitle = "Yero Script",
+	LoadingSubtitle = "by hellmid",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "Yero Hub"
+	},
+	Discord = {
+		Enabled = true,
+		Invite = "d62f7FrKbd", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+		RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Yero Script",
+		Subtitle = "Key System",
+		Note = "Get Key At Dsicord Server",
+		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {"https://pastebin.com/raw/rbm9qbGc"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local MainTab = Window:CreateTab("Home", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "Enjoy!",
+   Content = "Thanks To Mr.Hellmid",
+   Duration = 6.5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Button = MainTab:CreateButton({
+	Name = "AimLock",
+	Callback = function()
+		getgenv().OldAimPart = "HumanoidRootPart"
+		getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
+		getgenv().AimlockKey = "q"
+		getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
+		getgenv().ThirdPerson = true 
+		getgenv().FirstPerson = true
+		getgenv().TeamCheck = false -- Check if Target is on your Team (True means it wont lock onto your teamates, false is vice versa) (Set it to false if there are no teams)
+		getgenv().PredictMovement = true -- Predicts if they are moving in fast velocity (like jumping) so the aimbot will go a bit faster to match their speed 
+		getgenv().PredictionVelocity = 4.100
+		getgenv().CheckIfJumped = true
+		getgenv().Smoothness = false
+		getgenv().SmoothnessAmount = 0.2
+
+		local Players, Uis, RService, SGui = game:GetService"Players", game:GetService"UserInputService", game:GetService"RunService", game:GetService"StarterGui";
+		local Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
+		local Aimlock, MousePressed, CanNotify = true, false, false;
+		local AimlockTarget;
+		local OldPre;
+
+
+
+		getgenv().WorldToViewportPoint = function(P)
+			return Camera:WorldToViewportPoint(P)
+		end
+
+		getgenv().WorldToScreenPoint = function(P)
+			return Camera.WorldToScreenPoint(Camera, P)
+		end
+
+		getgenv().GetObscuringObjects = function(T)
+			if T and T:FindFirstChild(getgenv().AimPart) and Client and Client.Character:FindFirstChild("Head") then 
+				local RayPos = workspace:FindPartOnRay(RNew(
+					T[getgenv().AimPart].Position, Client.Character.Head.Position)
+				)
+				if RayPos then return RayPos:IsDescendantOf(T) end
+			end
+		end
+
+		getgenv().GetNearestTarget = function()
+			-- Credits to whoever made this, i didnt make it, and my own mouse2plr function kinda sucks
+			local players = {}
+			local PLAYER_HOLD  = {}
+			local DISTANCES = {}
+			for i, v in pairs(Players:GetPlayers()) do
+				if v ~= Client then
+					table.insert(players, v)
+				end
+			end
+			for i, v in pairs(players) do
+				if v.Character ~= nil then
+					local AIM = v.Character:FindFirstChild("Head")
+					if getgenv().TeamCheck == true and v.Team ~= Client.Team then
+						local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+						local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
+						local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
+						local DIFF = math.floor((POS - AIM.Position).magnitude)
+						PLAYER_HOLD[v.Name .. i] = {}
+						PLAYER_HOLD[v.Name .. i].dist= DISTANCE
+						PLAYER_HOLD[v.Name .. i].plr = v
+						PLAYER_HOLD[v.Name .. i].diff = DIFF
+						table.insert(DISTANCES, DIFF)
+					elseif getgenv().TeamCheck == false and v.Team == Client.Team then 
+						local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+						local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
+						local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
+						local DIFF = math.floor((POS - AIM.Position).magnitude)
+						PLAYER_HOLD[v.Name .. i] = {}
+						PLAYER_HOLD[v.Name .. i].dist= DISTANCE
+						PLAYER_HOLD[v.Name .. i].plr = v
+						PLAYER_HOLD[v.Name .. i].diff = DIFF
+						table.insert(DISTANCES, DIFF)
+					end
+				end
+			end
+
+			if unpack(DISTANCES) == nil then
+				return nil
+			end
+
+			local L_DISTANCE = math.floor(math.min(unpack(DISTANCES)))
+			if L_DISTANCE > getgenv().AimRadius then
+				return nil
+			end
+
+			for i, v in pairs(PLAYER_HOLD) do
+				if v.diff == L_DISTANCE then
+					return v.plr
+				end
+			end
+			return nil
+		end
+
+		Mouse.KeyDown:Connect(function(a)
+			if not (Uis:GetFocusedTextBox()) then 
+				if a == AimlockKey and AimlockTarget == nil then
+					pcall(function()
+						if MousePressed ~= true then MousePressed = true end 
+						local Target;Target = GetNearestTarget()
+						if Target ~= nil then 
+							AimlockTarget = Target
+						end
+					end)
+				elseif a == AimlockKey and AimlockTarget ~= nil then
+					if AimlockTarget ~= nil then AimlockTarget = nil end
+					if MousePressed ~= false then 
+						MousePressed = false 
+					end
+				end
+			end
+		end)
+
+		RService.RenderStepped:Connect(function()
+			if getgenv().ThirdPerson == true and getgenv().FirstPerson == true then 
+				if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 or (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
+					CanNotify = true 
+				else 
+					CanNotify = false 
+				end
+			elseif getgenv().ThirdPerson == true and getgenv().FirstPerson == false then 
+				if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 then 
+					CanNotify = true 
+				else 
+					CanNotify = false 
+				end
+			elseif getgenv().ThirdPerson == false and getgenv().FirstPerson == true then 
+				if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
+					CanNotify = true 
+				else 
+					CanNotify = false 
+				end
+			end
+			if Aimlock == true and MousePressed == true then 
+				if AimlockTarget and AimlockTarget.Character and AimlockTarget.Character:FindFirstChild(getgenv().AimPart) then 
+					if getgenv().FirstPerson == true then
+						if CanNotify == true then
+							if getgenv().PredictMovement == true then
+								if getgenv().Smoothness == true then
+									--// The part we're going to lerp/smoothen \\--
+									local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position + AimlockTarget.Character[getgenv().AimPart].Velocity/PredictionVelocity)
+
+									--// Making it work \\--
+									Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
+								else
+									Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position + AimlockTarget.Character[getgenv().AimPart].Velocity/PredictionVelocity)
+								end
+							elseif getgenv().PredictMovement == false then 
+								if getgenv().Smoothness == true then
+									--// The part we're going to lerp/smoothen \\--
+									local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position)
+
+									--// Making it work \\--
+									Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
+								else
+									Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().AimPart].Position)
+								end
+							end
+						end
+					end
+				end
+			end
+			if CheckIfJumped == true then
+				if AimlockTarget.Character.HuDDDDDDDDDDWmanoid.FloorMaterial == Enum.Material.Air then
+
+					getgenv().AimPart = "HumanoidRootPart"
+				else
+					getgenv().AimPart = getgenv().OldAimPart
+
+				end
+			end
+		end)
+	end,
+})
+
+
+
+local Button = MainTab:CreateButton({
+    Name = "Walk Faster",
+    Callback = function()
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+    -- The function that takes place when the button is pressed
+    end,
+ })
+
+local Button = MainTab:CreateButton({
+	Name = "Fly (Bypasses Anti Telport)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/yero0x"))()
+	end,
+})
+
+local Esp = Window:CreateTab("Esp", nil)
+local Button = Esp:CreateButton({
+	Name = "Esp Player",
+	Callback = function()
+		local Settings = {
+    Box_Color = Color3.fromRGB(255, 0, 0),
+    Tracer_Color = Color3.fromRGB(255, 0, 0),
+    Tracer_Thickness = 1,
+    Box_Thickness = 1,
+    Tracer_Origin = "Bottom", -- Middle or Bottom if FollowMouse is on this won't matter...
+    Tracer_FollowMouse = false,
+    Tracers = true
+}
+local Team_Check = {
+    TeamCheck = false, -- if TeamColor is on this won't matter...
+    Green = Color3.fromRGB(0, 255, 0),
+    Red = Color3.fromRGB(255, 0, 0)
+}
+local TeamColor = true
+
+--// SEPARATION
+local player = game:GetService("Players").LocalPlayer
+local camera = game:GetService("Workspace").CurrentCamera
+local mouse = player:GetMouse()
+
+local function NewQuad(thickness, color)
+    local quad = Drawing.new("Quad")
+    quad.Visible = false
+    quad.PointA = Vector2.new(0,0)
+    quad.PointB = Vector2.new(0,0)
+    quad.PointC = Vector2.new(0,0)
+    quad.PointD = Vector2.new(0,0)
+    quad.Color = color
+    quad.Filled = false
+    quad.Thickness = thickness
+    quad.Transparency = 1
+    return quad
+end
+
+local function NewLine(thickness, color)
+    local line = Drawing.new("Line")
+    line.Visible = false
+    line.From = Vector2.new(0, 0)
+    line.To = Vector2.new(0, 0)
+    line.Color = color 
+    line.Thickness = thickness
+    line.Transparency = 1
+    return line
+end
+
+local function Visibility(state, lib)
+    for u, x in pairs(lib) do
+        x.Visible = state
+    end
+end
+
+local function ToColor3(col) --Function to convert, just cuz c;
+    local r = col.r --Red value
+    local g = col.g --Green value
+    local b = col.b --Blue value
+    return Color3.new(r,g,b); --Color3 datatype, made of the RGB inputs
+end
+
+local black = Color3.fromRGB(0, 0 ,0)
+local function ESP(plr)
+    local library = {
+        --//Tracer and Black Tracer(black border)
+        blacktracer = NewLine(Settings.Tracer_Thickness*2, black),
+        tracer = NewLine(Settings.Tracer_Thickness, Settings.Tracer_Color),
+        --//Box and Black Box(black border)
+        black = NewQuad(Settings.Box_Thickness*2, black),
+        box = NewQuad(Settings.Box_Thickness, Settings.Box_Color),
+        --//Bar and Green Health Bar (part that moves up/down)
+        healthbar = NewLine(3, black),
+        greenhealth = NewLine(1.5, black)
+    }
+
+    local function Colorize(color)
+        for u, x in pairs(library) do
+            if x ~= library.healthbar and x ~= library.greenhealth and x ~= library.blacktracer and x ~= library.black then
+                x.Color = color
+            end
+        end
+    end
+
+    local function Updater()
+        local connection
+        connection = game:GetService("RunService").RenderStepped:Connect(function()
+            if plr.Character ~= nil and plr.Character:FindFirstChild("Humanoid") ~= nil and plr.Character:FindFirstChild("HumanoidRootPart") ~= nil and plr.Character.Humanoid.Health > 0 and plr.Character:FindFirstChild("Head") ~= nil then
+                local HumPos, OnScreen = camera:WorldToViewportPoint(plr.Character.HumanoidRootPart.Position)
+                if OnScreen then
+                    local head = camera:WorldToViewportPoint(plr.Character.Head.Position)
+                    local DistanceY = math.clamp((Vector2.new(head.X, head.Y) - Vector2.new(HumPos.X, HumPos.Y)).magnitude, 2, math.huge)
+                    
+                    local function Size(item)
+                        item.PointA = Vector2.new(HumPos.X + DistanceY, HumPos.Y - DistanceY*2)
+                        item.PointB = Vector2.new(HumPos.X - DistanceY, HumPos.Y - DistanceY*2)
+                        item.PointC = Vector2.new(HumPos.X - DistanceY, HumPos.Y + DistanceY*2)
+                        item.PointD = Vector2.new(HumPos.X + DistanceY, HumPos.Y + DistanceY*2)
+                    end
+                    Size(library.box)
+                    Size(library.black)
+
+                    
+
+                    --// Health Bar
+                    local d = (Vector2.new(HumPos.X - DistanceY, HumPos.Y - DistanceY*2) - Vector2.new(HumPos.X - DistanceY, HumPos.Y + DistanceY*2)).magnitude 
+                    local healthoffset = plr.Character.Humanoid.Health/plr.Character.Humanoid.MaxHealth * d
+
+                    library.greenhealth.From = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y + DistanceY*2)
+                    library.greenhealth.To = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y + DistanceY*2 - healthoffset)
+
+                    library.healthbar.From = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y + DistanceY*2)
+                    library.healthbar.To = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y - DistanceY*2)
+
+                    local green = Color3.fromRGB(0, 255, 0)
+                    local red = Color3.fromRGB(255, 0, 0)
+
+                    library.greenhealth.Color = red:lerp(green, plr.Character.Humanoid.Health/plr.Character.Humanoid.MaxHealth);
+
+                    if Team_Check.TeamCheck then
+                        if plr.TeamColor == player.TeamColor then
+                            Colorize(Team_Check.Green)
+                        else 
+                            Colorize(Team_Check.Red)
+                        end
+                    else 
+                        library.tracer.Color = Settings.Tracer_Color
+                        library.box.Color = Settings.Box_Color
+                    end
+                    if TeamColor == true then
+                        Colorize(plr.TeamColor.Color)
+                    end
+                    Visibility(true, library)
+                else 
+                    Visibility(false, library)
+                end
+            else 
+                Visibility(false, library)
+                if game.Players:FindFirstChild(plr.Name) == nil then
+                    connection:Disconnect()
+                end
+            end
+        end)
+    end
+    coroutine.wrap(Updater)()
+end
+
+for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+    if v.Name ~= player.Name then
+        coroutine.wrap(ESP)(v)
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(newplr)
+    if newplr.Name ~= player.Name then
+        coroutine.wrap(ESP)(newplr)
+    end
+end)
+   end,
+})
+
+
+
+local Button = Esp:CreateButton({
+	Name = "Esp Atm",
+	Callback = function()
+		-- loadstring
+		local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+
+		-- config
+		ESP.Players = false
+		ESP.Boxes = false
+		ESP.Names = true
+		ESP:Toggle(true)
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM5", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM1", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM12", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM2", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM15", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM3", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM13", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM4", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM14", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM5", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM11", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM6", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM10", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM7", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM9", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM8", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM1", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM9", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM2", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM10", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM3", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM11", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM4", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM12", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM7", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM13", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM8", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM14", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+
+		-- object
+		ESP:AddObjectListener(Workspace.ATMS, { -- Object Path, For example: Workspace.ThisFolder
+			Name = "ATM6", --Object name inside of the path, for example: Workspace.ThisFolder.Item_1
+			CustomName = "ATM15", -- Name you want to be displayed
+			Color = Color3.fromRGB(260, 260, 260), -- Color
+			IsEnabled = "whatever" -- Any name, has to be the same as the last line: ESP.TheNameYouWant
+		})
+		ESP.whatever = true
+	end,
+})
+
+local AutoFarm = Window:CreateTab("AutoFarm", nil)
+local Button = AutoFarm:CreateButton({
+    Name = "Box Auto Farm",
+    Callback = function()
+        print("Loading")
+repeat wait() until game:IsLoaded()
+
+local ProximityPromptService = game:GetService("ProximityPromptService")
+
+if _G.hold then _G.hold:Disconnect() end
+_G.hold = ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
+    prompt.HoldDuration = 0.1;
+end)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+
+local truck = game.Workspace:WaitForChild("cratetruck2")
+
+local jobStart = game.Workspace:WaitForChild("PlaceHere")
+local startProx = jobStart:FindFirstChild("Attachment"):FindFirstChild("ProximityPrompt")
+
+local jobEnd = truck:WaitForChild("Model"):WaitForChild("ClickBox")
+local endProx = jobEnd:FindFirstChild("ProximityPrompt")
+
+local function walkTo(humanoid: Humanoid, position: Vector3, distance)
+if not distance then distance = 10 end
+
+humanoid:MoveTo(position)
+repeat humanoid:MoveTo(position) wait(0.25) until (humanoid.Parent.PrimaryPart.Position - position).Magnitude < distance
+
+return
+end
+
+local function loop(speed)
+--print("Loop")
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChild("Humanoid")
+
+--print("Running checks.")
+if not humanoid then warn("Could not find humanoid") return end
+if (character.PrimaryPart.Position - jobStart.Position).Magnitude > 15 then warn("Primary distance exceeds 15 studs") return end
+
+if speed then humanoid.WalkSpeed = 23 end
+
+walkTo(humanoid, jobStart.Position, startProx.MaxActivationDistance)
+
+camera.CameraSubject = jobStart
+repeat fireproximityprompt(startProx, 1) wait(startProx.HoldDuration+0.25) until player.Backpack:FindFirstChild("Crate")
+camera.CameraSubject = character.PrimaryPart
+player.Backpack:FindFirstChild("Crate").Parent = character
+
+if speed then humanoid.WalkSpeed = 23 end
+walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+walkTo(humanoid, jobEnd.Position - Vector3.new(0,0,5), endProx.MaxActivationDistance)
+
+camera.CameraSubject = jobEnd
+repeat fireproximityprompt(endProx, 1) wait(endProx.HoldDuration+0.25) until not character:FindFirstChild("Crate")
+camera.CameraSubject = character.PrimaryPart
+walkTo(humanoid, Vector3.new(-540, 4, -83), 1)
+
+
+humanoid.WalkSpeed = 10
+end
+
+print("Loaded")
+
+if _G.enabled then _G.enabled = not _G.enabled end
+
+_G.enabled = true
+local runSpeed = true
+while _G.enabled == true do task.wait()
+loop(runSpeed)
+end
+    -- The function that takes place when the button is pressed
+    end,
+ })
+
+local Button = AutoFarm:CreateButton({
+   Name = "Anti Afk (Must Use While Farming!)",
+   Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/anti%20afk%20og"))()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+
+local Misc = Window:CreateTab("Misc", nil) -- Title, Image
+local Button = Tab:CreateButton({
+   Name = "Small Server Finder",
+   Callback = function()
+           local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
+
+module:Teleport(game.PlaceId)
+
+   -- The function that takes place when the button is pressed
+   end,
+})
