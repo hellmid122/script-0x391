@@ -1,1 +1,16 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/bl"))()
+local nigga = game.Players.LocalPlayer.Name
+if nigga == "derrick0119" or
+   nigga == "chaytenhillontop" or
+   nigga == "maxy9987" or
+   nigga == "1_smile2" or
+   nigga == "Alexg2108" or
+   nigga == "lilhackia" or
+   nigga == "11tide11" or
+   nigga == "Nicolaim12345" or
+   nigga == "vhill_ej" or
+   nigga == "MASTERGAMER10236" or
+   nigga == "Mikey_bandooo" or
+   nigga == "icantcompriehaned" or
+   nigga == "JustinBiever48417" then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/bl"))()
+end
