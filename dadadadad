@@ -86,4 +86,4 @@ while true do
     deleteTruckProp()
     deleteBoxingGym()
     searchAndDelete()
-    wait(10)  
+    wait(10)  then
