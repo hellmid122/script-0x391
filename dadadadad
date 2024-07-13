@@ -1,3 +1,4 @@
+		-- Function to teleport to specific coordinates and hold 'E' key
 local function teleportAndHoldE(x, y, z)
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
@@ -15,3 +16,7 @@ local function teleportAndHoldE(x, y, z)
 
     -- Release 'E' key after the desired duration
     virtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+end
+
+
+teleportAndHoldE(-579.7178344726562, 3.5371451377868652, -71.9795913696289)
