@@ -607,14 +607,7 @@ end
     end,
  })
 
-AutoFarmTab:AddButton({
-	Name = "Anti Afk (Must Use While Farming!)",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/anti%20afk%20og"))()
-		-- The function that takes place when the button is pressed
-		end,
-  	    
-})
+
 
 local MiscTab = Window:MakeTab({
 	Name = "Misc",
@@ -722,4 +715,14 @@ end)
 
    -- The function that takes place when the button is pressed
    end,
+})
+
+
+AutoFarmTab:AddButton({
+	Name = "Anti Afk (Must Use While Farming!)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/anti%20afk%20og"))()
+		-- The function that takes place when the button is pressed
+		end,
+  	    
 })
