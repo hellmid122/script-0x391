@@ -1,0 +1,17 @@
+local function teleportAndHoldE(x, y, z)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    -- Teleport to specified coordinates
+    humanoidRootPart.CFrame = CFrame.new(x, y, z)
+
+    -- Hold 'E' key using VirtualInputManager
+    local virtualInputManager = game:GetService("VirtualInputManager")
+    virtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
+
+    -- Adjust the duration of holding 'E' key if needed
+    wait(5)  -- Holding 'E' for 5 seconds as an example
+
+    -- Release 'E' key after the desired duration
+    virtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
