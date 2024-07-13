@@ -1,22 +1,89 @@
-		-- Function to teleport to specific coordinates and hold 'E' key
-local function teleportAndHoldE(x, y, z)
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+-- Define the name of the part you want to delete
+local partNameToDelete = "backp"
+local modelNameToDelete = "boxing gym"
 
-    -- Teleport to specified coordinates
-    humanoidRootPart.CFrame = CFrame.new(x, y, z)
-
-    -- Hold 'E' key using VirtualInputManager
-    local virtualInputManager = game:GetService("VirtualInputManager")
-    virtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
-
-    -- Adjust the duration of holding 'E' key if needed
-    wait(5)  -- Holding 'E' for 5 seconds as an example
-
-    -- Release 'E' key after the desired duration
-    virtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+-- Function to search for cratetruck2 and delete TruckProp inside it
+local function deleteTruckProp()
+    local cratetruck2 = game.Workspace:FindFirstChild("cratetruck2")
+    if cratetruck2 then
+        local truckProp = cratetruck2:FindFirstChild("TruckProp")
+        if truckProp then
+            truckProp:Destroy()
+        else
+            warn("Part '" .. partNameToDelete .. "' not found in 'cratetruck2'.")
+        end
+    else
+        warn("Model 'cratetruck2' not found in Workspace.")
+    end
 end
 
+-- Function to recursively delete a specific child under a parent
+local function deleteChild(parent, childName)
+    local child = parent:FindFirstChild(childName)
+    if child then
+        child:Destroy()
+    else
+        warn("Child '" .. childName .. "' not found under parent.")
+    end
+end
 
-teleportAndHoldE(-579.7178344726562, 3.5371451377868652, -71.9795913696289)
+-- Function to search for "Box Job" and delete "boxing gym" inside it under "Map"
+local function deleteBoxingGym()
+    local mapFolder = game.Workspace:FindFirstChild("Map")
+    if mapFolder then
+        local boxJob = mapFolder:FindFirstChild("Box Job")  -- Assuming "Box Job" is the correct name
+        if boxJob then
+            deleteChild(boxJob, modelNameToDelete)
+        else
+            warn("Model 'Box Job' not found under 'Map'.")
+        end
+    else
+        warn("Folder 'Map' not found in Workspace.")
+    end
+end
+
+-- Function to recursively delete parts by name under a specific parent
+local function deletePartsByNameUnderParent(parent, parentName, name)
+    local children = parent:GetChildren()
+    for _, child in ipairs(children) do
+        if child:IsA("Model") or child:IsA("BasePart") then
+            if child.Name == name and child.Parent.Name == parentName then
+                child:Destroy()
+            elseif child:IsA("Model") then
+                deletePartsByNameUnderParent(child, parentName, name) -- Recursively check children
+            end
+        end
+    end
+end
+
+-- Function to search the entire game for the specified parent and delete parts under it
+local function searchAndDelete()
+    local map = game.Workspace.Map -- Assuming 'Map' is under Workspace, adjust as necessary
+
+    -- Find the 'Trash Job' model under 'Map'
+    local trashJob = map:FindFirstChild("Trash Job")
+    if trashJob then
+        deletePartsByNameUnderParent(trashJob, "Trash Job", partNameToDelete)
+    else
+        warn("Model 'Trash Job' not found under 'Map'.")
+    end
+end
+
+-- Function to modify ProximityPrompts
+local function modifyProximityPrompts()
+    local proximityPrompts = game.Workspace:GetDescendants()
+    for _, instance in ipairs(proximityPrompts) do
+        if instance:IsA("ProximityPrompt") then
+            -- Change the HoldDuration to 0
+            instance.HoldDuration = 0
+        end
+    end
+end
+
+-- Main loop to continuously modify ProximityPrompts and delete parts
+while true do
+    modifyProximityPrompts()
+    deleteTruckProp()
+    deleteBoxingGym()
+    searchAndDelete()
+    wait(10)  
