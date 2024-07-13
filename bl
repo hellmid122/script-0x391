@@ -1,50 +1,16 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-local Window = Rayfield:CreateWindow({
-	Name = "Yero Script v1.2",
-	LoadingTitle = "Yero Script",
-	LoadingSubtitle = "by hellmid",
-	ConfigurationSaving = {
-		Enabled = true,
-		FolderName = nil, -- Create a custom folder for your hub/game
-		FileName = "Yero Hub"
-	},
-	Discord = {
-		Enabled = true,
-		Invite = "d62f7FrKbd", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-		RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-	},
-	KeySystem = true, -- Set this to true to use our key system
-	KeySettings = {
-		Title = "Yero Script",
-		Subtitle = "Key System",
-		Note = "Get Key At Dsicord Server",
-		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-		GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-		Key = {"https://pastebin.com/raw/rbm9qbGc"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-	}
+local MainTab = Window:MakeTab({
+	Name = "Home",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
-local MainTab = Window:CreateTab("Home", nil) -- Title, Image
-local MainSection = MainTab:CreateSection("Main")
 
-Rayfield:Notify({
-   Title = "Enjoy!",
-   Content = "Thanks To Mr.Hellmid",
-   Duration = 6.5,
-   Image = nil,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
 
-local Button = MainTab:CreateButton({
+
+MainTab:AddButton({
 	Name = "AimLock (Q To Lock)",
 	Callback = function()
 		getgenv().OldAimPart = "HumanoidRootPart"
@@ -222,24 +188,28 @@ local Button = MainTab:CreateButton({
 
 
 
-local Button = MainTab:CreateButton({
-    Name = "Walk Faster",
-    Callback = function()
+MainTab:AddButton({
+	Name = "Walk Faster",
+	Callback = function()
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
     -- The function that takes place when the button is pressed
     end,
  })
 
-local Button = MainTab:CreateButton({
-	Name = "Fly (Bypasses Anti Telport)",
+MainTab:AddButton({
+	Name = "Fly",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/yero0x"))()
 	end,
 })
 
-local Esp = Window:CreateTab("Esp", nil)
-local Button = Esp:CreateButton({
-	Name = "Esp Player",
+local EspTab = Window:MakeTab({
+	Name = "Esp",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+EspTab:AddButton({
+	Name = "Esp Players",
 	Callback = function()
 		local Settings = {
     Box_Color = Color3.fromRGB(255, 0, 0),
@@ -401,8 +371,8 @@ end)
 
 
 
-local Button = Esp:CreateButton({
-	Name = "Esp Atm",
+EspTab:AddButton({
+	Name = "Esp Atms",
 	Callback = function()
 		-- loadstring
 		local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
@@ -554,10 +524,14 @@ local Button = Esp:CreateButton({
 	end,
 })
 
-local AutoFarm = Window:CreateTab("AutoFarm", nil)
-local Button = AutoFarm:CreateButton({
-    Name = "Box Auto Farm",
-    Callback = function()
+local AutoFarmTab = Window:MakeTab({
+	Name = "AutoFarm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+AutoFarmTab:AddButton({
+	Name = "Box Auto Farm",
+	Callback = function()
         print("Loading")
 repeat wait() until game:IsLoaded()
 
@@ -633,22 +607,118 @@ end
     end,
  })
 
-local Button = AutoFarm:CreateButton({
-   Name = "Anti Afk (Must Use While Farming!)",
-   Callback = function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/anti%20afk%20og"))()
-   -- The function that takes place when the button is pressed
-   end,
+AutoFarmTab:AddButton({
+	Name = "Anti Afk (Must Use While Farming!)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/anti%20afk%20og"))()
+		-- The function that takes place when the button is pressed
+		end,
+  	    
+})
+
+local MiscTab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
 
-local Misc = Window:CreateTab("Misc", nil) -- Title, Image
-local Button = Misc:CreateButton({
-   Name = "Small Server Finder",
-   Callback = function()
-           local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
 
-module:Teleport(game.PlaceId)
+AutoFarmTab:AddButton({
+	Name = "Trash Auto Farm",
+	Callback = function()
+            		-- Function to teleport to specific coordinates and hold 'E' key
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local Noclip = nil
+local Clip = nil
+
+function noclip()
+	Clip = false
+	local function Nocl()
+		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+			for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+				if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+					v.CanCollide = false
+				end
+			end
+		end
+		wait(0.21) -- basic optimization
+	end
+	Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
+end
+
+function clip()
+	if Noclip then Noclip:Disconnect() end
+	Clip = true
+end
+
+noclip() -- to toggle noclip() and clip()
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local backpack = player.Backpack
+local coordinates = {
+    Vector3.new(698.394287109375, 3.5371994972229004, 170.7313232421875),
+    Vector3.new(729.8390502929688, 3.4121947288513184, 211.96453857421875)
+}
+local stopScript = false
+
+local function HoldEFor2Seconds()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game)
+    wait(1)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game)
+end
+
+local function MoveBackAndForth()
+    while not stopScript do
+        for i = 1, #coordinates do
+            local coord = coordinates[i]
+            humanoid.WalkSpeed = 22
+            humanoid:MoveTo(coord)
+            humanoid.MoveToFinished:Wait()
+
+            if stopScript then
+                return  -- Exit the function if stopScript is true
+            end
+
+            if backpack then
+                local crate = backpack:FindFirstChild("TrashBag")
+                if crate then
+                    crate.Parent = character
+                end
+            end
+
+            HoldEFor2Seconds()
+        end
+    end
+end
+
+local function OnKeyPress(input)
+    if input.KeyCode == Enum.KeyCode.F1 then
+        stopScript = true
+        humanoid.WalkSpeed = 16  -- Reset walk speed to default when stopping
+    end
+end
+
+game:GetService("UserInputService").InputBegan:Connect(OnKeyPress)
+
+MoveBackAndForth()
+ end
+}) 
+
+MiscTab:AddButton({
+	Name = "Instant Loot",
+	Callback = function()
+           local ProximityPromptService = game:GetService("ProximityPromptService")
+
+if _G.hold then _G.hold:Disconnect() end
+_G.hold = ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
+    prompt.HoldDuration = 0;
+end)
+
 
    -- The function that takes place when the button is pressed
    end,
