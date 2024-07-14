@@ -11,7 +11,7 @@ OrionLib:MakeNotification({
 	Name = "Read!",
 	Content = "You Must Start Job Before Starting Auto Farm!",
 	Image = "rbxassetid://4483345998",
-	Time = 5
+	Time = 7
 })
 
 
@@ -730,5 +730,14 @@ AutoFarmTab:AddButton({
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/anti%20afk%20og"))()
 		-- The function that takes place when the button is pressed
 		end,
+  	    
+})
+
+MiscTab:AddButton({
+	Name = "Show Guns",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/guns"))()
+	end,
+		
   	    
 })
