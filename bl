@@ -7,6 +7,12 @@ local MainTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+OrionLib:MakeNotification({
+	Name = "Read!",
+	Content = "You Must Start Job Before Starting Auto Farm!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
 
 
 
@@ -21,7 +27,7 @@ MainTab:AddButton({
 		getgenv().FirstPerson = true
 		getgenv().TeamCheck = false -- Check if Target is on your Team (True means it wont lock onto your teamates, false is vice versa) (Set it to false if there are no teams)
 		getgenv().PredictMovement = true -- Predicts if they are moving in fast velocity (like jumping) so the aimbot will go a bit faster to match their speed 
-		getgenv().PredictionVelocity = 4.100
+		getgenv().PredictionVelocity = 3.100
 		getgenv().CheckIfJumped = true
 		getgenv().Smoothness = false
 		getgenv().SmoothnessAmount = 0.2
