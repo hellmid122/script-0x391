@@ -1,0 +1,846 @@
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+local GUI = Mercury:Create{
+	Name = "Universal Ware",
+	Size = UDim2.fromOffset(600, 400),
+	Theme = Mercury.Themes.Dark,
+	Link = "https://github.com/deeeity/mercury-lib"
+}
+local MainTab = GUI:Tab{
+	Name = "Main",
+	Icon = "rbxassetid://18298087757"
+}
+local AimTab = GUI:Tab{
+	Name = "Aimbot",
+	Icon = "rbxassetid://18298087757"
+}
+local VisualsTab = GUI:Tab{
+	Name = "ESP",
+	Icon = "rbxassetid://18298087757"
+}
+local AutofarmTab = GUI:Tab{
+	Name = "AutoFarm",
+	Icon = "rbxassetid://18298087757"
+}
+local TeleTab = GUI:Tab{
+	Name = "Teleport",
+	Icon = "rbxassetid://18298087757"
+}
+MainTab:Button{
+	Name = "Instaloot",
+	Description = "Allows You To Instantly Press E On Prompts. (TESTING)",
+	Callback = function()
+		local function modifyProximityPrompts()
+			local proximityPrompts = game:GetService("Workspace"):GetDescendants()
+			for _, instance in ipairs(proximityPrompts) do
+				if instance:IsA("ProximityPrompt") then
+					-- Change the HoldDuration to 0
+					instance.HoldDuration = 0
+				end
+			end
+		end
+
+
+		while true do
+			modifyProximityPrompts()
+			wait(10)  -- Wait for 1 second before repeating
+		end
+	end
+}
+MainTab:Slider{
+	Name = "WalkSpeed",
+	Default = 16,
+	Min = 0,
+	Max = 23,
+    Description = "Default Is 16. Anything Higher Than 24 Will Kick You <3", 
+	Callback = function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end
+}
+MainTab:Button{
+Name = "CTRL + CLICK DEL FLOOR FIX",
+	Description = "Stops You From Falling Threw Some Building. (TESTING).",
+    Callback = function()
+	-- Size of the baseplate
+local baseplateSize = Vector3.new(10000000, 0, 10000000)  -- Adjust size as needed
+
+-- Get the local player and their character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Function to spawn the baseplate under the character's feet
+local function SpawnBaseplate()
+    -- Calculate baseplate position directly under the character's feet
+    local baseplatePosition = humanoidRootPart.Position + Vector3.new(0, -3.3, 0)
+    
+    -- Create the baseplate
+    local baseplate = Instance.new("Part")
+    baseplate.Size = baseplateSize
+    baseplate.Position = baseplatePosition
+    baseplate.Anchored = true
+    baseplate.CanCollide = true
+    baseplate.Parent = game.Workspace
+    
+    baseplate.BrickColor = BrickColor.new("Bright blue")  -- Adjust color as desired
+    baseplate.Material = Enum.Material.Concrete  -- Adjust material as desired
+    
+    print("Baseplate spawned under your feet!")
+end
+
+-- Call the function to spawn the baseplate when the character is added to the game
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+    SpawnBaseplate()
+end)
+
+-- Call the function immediately if the character is already in the game
+if game.Players.LocalPlayer.Character then
+    SpawnBaseplate()
+end
+end
+}
+MainTab:Button{
+	Name = "Ctrl + Click Delete",
+	Description = "Hold CTRL and Click To Delete Modules.",
+	Callback = function(state)
+		pcall(loadstring(game:HttpGet("https://pastebin.com/raw/KGYKmYtW")))
+	end
+}
+
+local excludedTools = {
+    "Card", "Hot Chips", "Potato Chips", "Phone", "Fist",
+    "Crate", "TrashBag", "Knife", "Fake ID", "Standard Clip",
+    "Potato", "Drum Magazine", "Extended Clip", "Speed Loader",
+    "Ski Mask", "Flour", "Heavy Magazine", "Bacon Egg And Cheese"
+}
+local showGunsEnabled = false
+
+local function isExcludedTool(toolName)
+    for _, excludedName in ipairs(excludedTools) do
+        if toolName == excludedName then
+            return true
+        end
+    end
+    return false
+end
+
+local function updatePlayerTool(player)
+    if not showGunsEnabled then return end
+
+    local character = player.Character
+    if not character then return end
+
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if not humanoid then return end
+
+    local currentTool = humanoid.Parent:FindFirstChildOfClass("Tool")
+
+    local billboardName = "ToolDisplay"
+    local billboard = character:FindFirstChild(billboardName)
+    if not billboard then
+        billboard = Instance.new("BillboardGui")
+        billboard.Name = billboardName
+        billboard.AlwaysOnTop = true
+        billboard.Size = UDim2.new(3, 0, 1, 0)
+        billboard.StudsOffset = Vector3.new(0, 3, 0) 
+
+        local textLabel = Instance.new("TextLabel", billboard)
+        textLabel.Size = UDim2.new(1, 0, 1, 0)
+        textLabel.TextSize = 20
+        textLabel.TextStrokeTransparency = 0.5
+        textLabel.BackgroundTransparency = 1
+        textLabel.Font = Enum.Font.SourceSansBold
+
+        billboard.Parent = character
+    end
+
+    local textLabel = billboard.TextLabel
+    if currentTool then
+        local toolName = currentTool.Name
+
+        if isExcludedTool(toolName) then
+            textLabel.Text = ""
+        else
+            textLabel.Text = toolName
+
+            if string.find(toolName, "Micro ARP") or
+               string.find(toolName, "AK Draco") then
+                textLabel.TextColor3 = Color3.new(1, 0, 0)  -- Red color
+            elseif string.find(toolName, "MCX") or
+                   string.find(toolName, "Draco") or
+                   string.find(toolName, "Tec-9") or
+                   string.find(toolName, "Springfield XD MOD") or
+                   string.find(toolName, "AR Pistol") or
+                   string.find(toolName, "P320E") or
+                   string.find(toolName, "FN57") or
+                   string.find(toolName, "G19EXT") then
+                textLabel.TextColor3 = Color3.new(0, 1, 0)  -- Green color
+            elseif string.find(toolName, "Drum") then
+                textLabel.TextColor3 = Color3.new(1, 0.8, 0)  -- Gold color
+            else
+                textLabel.TextColor3 = Color3.new(1, 1, 1)  -- Default color
+            end
+        end
+    else
+        textLabel.Text = ""
+    end
+end
+
+local function updatePlayerToolsLoop()
+    while true do
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            updatePlayerTool(player)
+        end
+        wait(0.1)  -- Update interval in seconds
+    end
+end
+
+spawn(updatePlayerToolsLoop)
+
+local function onCharacterAdded(character)
+    updatePlayerTool(character.Parent)
+end
+
+
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        onCharacterAdded(character)
+    end)
+end)
+
+local function toggleShowGuns(state)
+    showGunsEnabled = state
+
+    -- Enable or disable the display for existing players
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if showGunsEnabled then
+            updatePlayerTool(player)
+        else
+            local billboard = player.Character:FindFirstChild("ToolDisplay")
+            if billboard then
+                billboard:Destroy()
+            end
+        end
+    end
+end
+
+-- Create UI toggle for showing guns
+VisualsTab:Toggle{
+    Name = "Show Guns",
+    StartingState = false,
+    Description = "Shows Guns Above Heads. Red=Teir2 Green=Gamepass Gold=Drum.",
+    Callback = toggleShowGuns
+}
+VisualsTab:Toggle{
+    Name = "Health Bar",
+    StartingState = false,
+    Description = nil,
+    Callback = function(enabled)
+        -- Function to create health bar for a player
+        local function createHealthBar(player)
+            if player == game.Players.LocalPlayer then
+                return -- Skip creating health bar for the local player
+            end
+
+            local humanoid = player.Character:WaitForChild("Humanoid")
+
+            -- Create a BillboardGui for the health bar
+            local gui = Instance.new("BillboardGui")
+            gui.Name = "HealthBar"
+            gui.Adornee = player.Character.Head
+            gui.Size = UDim2.new(2, 0, 0.2, 0) -- Adjust size as needed
+            gui.StudsOffset = Vector3.new(0, 2, 0) -- Vertical offset from the head
+            gui.AlwaysOnTop = true
+            gui.MaxDistance = 100000 -- Health bar visible from up to 100,000 studs away
+            gui.LightInfluence = 1 -- Fully influenced by lighting
+            gui.Parent = player.Character.Head
+
+            -- Create a Frame inside the BillboardGui
+            local frame = Instance.new("Frame")
+            frame.Size = UDim2.new(humanoid.Health / humanoid.MaxHealth, 0, 1, 0)
+            frame.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Green color
+            frame.BorderSizePixel = 0
+            frame.Parent = gui
+
+            -- Update the health bar continuously
+            humanoid.HealthChanged:Connect(function()
+                frame.Size = UDim2.new(humanoid.Health / humanoid.MaxHealth, 0, 1, 0)
+            end)
+        end
+
+        -- Function to toggle health bars for all players
+        local function toggleHealthBars(enabled)
+            for _, player in pairs(game.Players:GetPlayers()) do
+                if enabled then
+                    createHealthBar(player)
+                else
+                    if player ~= game.Players.LocalPlayer then -- Check if not the local player
+                        local healthBar = player.Character:FindFirstChild("Head"):FindFirstChild("HealthBar")
+                        if healthBar then
+                            healthBar:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+
+        -- Call the toggleHealthBars function when the toggle is clicked
+        toggleHealthBars(enabled)
+    end
+}
+VisualsTab:Button{
+	Name = "Player Outlines",
+	Description = "Shows Outlines Of Players.",
+	Callback = function(state)
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
+	end
+}
+AutofarmTab:Button{
+	Name = "PRESS BEFORE AUTOFARM/AUTO JOB",
+	Description = "Press F1 To Stop Farming. (TESTING).",
+    Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/DrugScripts/sbscript/main/AF.lua'))()
+   end
+}
+AutofarmTab:Button{
+	Name = "Start Trash Job",
+	Description = "Auto Starts The Trash Job. (TESTING).",
+    Callback = function()
+	-- Function to teleport to specific coordinates and hold 'E' key
+local function teleportAndHoldE(x, y, z)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    -- Teleport to specified coordinates
+    humanoidRootPart.CFrame = CFrame.new(x, y, z)
+
+    -- Hold 'E' key using VirtualInputManager
+    local virtualInputManager = game:GetService("VirtualInputManager")
+    virtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
+
+    -- Adjust the duration of holding 'E' key if needed
+    wait(5)  -- Holding 'E' for 5 seconds as an example
+
+    -- Release 'E' key after the desired duration
+    virtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+end
+
+
+teleportAndHoldE(717.5482788085938, 3.5371992588043213, 169.90029907226562)
+	end
+}
+AutofarmTab:Button{
+	Name = "Trash Auto Farm",
+	Description = "Press F1 To Stop Farming. (TESTING).",
+    Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/DrugScripts/sbscript/main/trash.lua'))() 
+    end
+}
+AutofarmTab:Button{
+	Name = "Start Box Job",
+	Description = "Auto Starts The Box Job (TESTING).",
+    Callback = function()
+		-- Function to teleport to specific coordinates and hold 'E' key
+local function teleportAndHoldE(x, y, z)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    -- Teleport to specified coordinates
+    humanoidRootPart.CFrame = CFrame.new(x, y, z)
+
+    -- Hold 'E' key using VirtualInputManager
+    local virtualInputManager = game:GetService("VirtualInputManager")
+    virtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
+
+    -- Adjust the duration of holding 'E' key if needed
+    wait(5)  -- Holding 'E' for 5 seconds as an example
+
+    -- Release 'E' key after the desired duration
+    virtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+end
+
+
+teleportAndHoldE(-579.7178344726562, 3.5371451377868652, -71.9795913696289)
+	end
+}
+AutofarmTab:Button{
+	Name = "Box Auto Farm",
+	Description = "Press F1 To Stop Farming. (TESTING).",
+    Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/yeroscripthide/mhm/main/auto%20farm%20box'))() 
+    end
+}
+TeleTab:Button{
+Name = "PRESS BEFORE TELEPORTING",
+	Description = "Allows Teleporting.",
+    Callback = function()
+	-- Size of the baseplate
+local baseplateSize = Vector3.new(10000000, 0, 10000000)  -- Adjust size as needed
+
+-- Get the local player and their character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Function to spawn the baseplate under the character's feet
+local function SpawnBaseplate()
+    -- Calculate baseplate position directly under the character's feet
+    local baseplatePosition = humanoidRootPart.Position + Vector3.new(0, -14, 0)
+    
+    -- Create the baseplate
+    local baseplate = Instance.new("Part")
+    baseplate.Size = baseplateSize
+    baseplate.Position = baseplatePosition
+    baseplate.Anchored = true
+    baseplate.CanCollide = true
+    baseplate.Parent = game.Workspace
+    
+    baseplate.BrickColor = BrickColor.new("Bright blue")  -- Adjust color as desired
+    baseplate.Material = Enum.Material.Concrete  -- Adjust material as desired
+    
+    print("Baseplate spawned under your feet!")
+end
+
+-- Call the function to spawn the baseplate when the character is added to the game
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+    SpawnBaseplate()
+end)
+
+-- Call the function immediately if the character is already in the game
+if game.Players.LocalPlayer.Character then
+    SpawnBaseplate()
+end
+end
+}
+
+local function teleportTo(target)
+    -- Your teleportation script remains unchanged
+    print("Teleporting to:", target)
+end
+
+local MyDropdown = TeleTab:Dropdown{
+    Name = "Teleports",
+    StartingText = "None",
+    Description = "Teleport to any location on the list.",
+    Items = {
+        {"Dealership", 1},      -- {name, value}
+        {"Box Job", 2},         -- {name, value}
+        {"Trash Job", 3},       -- {name, value}
+        {"Bank", 4},            -- {name, value}
+        {"Fake ID", 5},         -- {name, value}
+        {"Main Gun Store", 6},  -- {name, value}
+        {"Gun Store", 7}        -- {name, value}
+    },
+    Callback = function(item)
+        if item == 1 then
+local targetPosition = Vector3.new(732.9501342773438, 3.709825038909912, 434.654296875)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+
+        elseif item == 2 then
+
+            local targetPosition = Vector3.new(-520.0985107421875, 3.4121336936950684, -82.7499008178711)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+
+        elseif item == 3 then
+
+            local targetPosition = Vector3.new(709.990234375, 3.5371994972229004, 157.0732421875)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+
+        elseif item == 4 then
+local targetPosition = Vector3.new(-52.92890548706055, 3.7371387481689453, -332.91278076171875)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+            -- Replace with your actual script for Bank
+        elseif item == 5 then
+local targetPosition = Vector3.new(216.716064453125, 3.7371325492858887, -332.35711669921875)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+            -- Replace with your actual script for Fake ID
+        elseif item == 6 then
+local targetPosition = Vector3.new(219.3710479736328, 3.7300682067871094, -163.08628845214844)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+            -- Replace with your actual script for Main Gun Store
+        elseif item == 7 then
+local targetPosition = Vector3.new(501.29888916015625, 3.5371241569519043, -182.6074981689453)  -- Replace with your desired coordinates
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+
+    while (target - currentPosition).magnitude > distanceThreshold do
+        -- Calculate direction towards the target
+        local direction = (target - currentPosition).unit
+
+        -- Move in small increments towards the target
+        local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+
+        -- Check if the newPosition would overshoot the target
+        if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+            humanoidRootPart.CFrame = CFrame.new(newPosition)
+        else
+            humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+            break  -- Exit the loop if we've reached the target position
+        end
+
+        -- Wait briefly before checking again
+        wait(0.1)  -- Adjust wait time as needed
+        currentPosition = humanoidRootPart.Position
+    end
+
+    -- Teleportation completed
+    print("Teleportation to target position completed!")
+end
+
+-- Call the teleport function with the target position
+teleportTo(targetPosition)
+            -- Replace with your actual script for Gun Store
+        else
+            -- Handle unexpected cases or add more conditions as needed
+            print("No script defined for this item:", item)
+        end
+    end
+}
+
+
+local MyDropdown = TeleTab:Dropdown{
+    Name = "ATMs",
+    StartingText = "None",
+    Description = "Teleports You To The ATM If Active.",
+    Items = {
+        {"ATM1", 1},      -- {name, value}
+        {"ATM2", 2},         -- {name, value}
+        {"ATM3", 3},       -- {name, value}
+        {"ATM4", 4},            -- {name, value}
+        {"ATM5", 5},         -- {name, value}
+        {"ATM6", 6},         -- {name, value}
+        {"ATM7", 7},         -- {name, value}
+        {"ATM8", 8},          -- {name, value}
+        {"ATM9", 9},         -- {name, value}
+        {"ATM10", 10},        -- {name, value}
+        {"ATM11", 11},        -- {name, value}
+        {"ATM12", 12},        -- {name, value}
+        {"ATM13", 13},        -- {name, value}
+        {"ATM14", 14},        -- {name, value}
+        {"ATM15", 15},        -- {name, value}
+    },
+    Callback = function(item)
+        if item == 1 then
+            local targetPosition = Vector3.new(-32.586585998535156, 3.763624668121338, -300.15673828125)  -- Replace with your desired coordinates
+local function isATMEnabled()
+    local workspace = game:GetService("Workspace")
+    local atmFolder = workspace:FindFirstChild("ATMS")
+    if atmFolder then
+        local atm1 = atmFolder:FindFirstChild("ATM1")
+        if atm1 then
+            local attachment = atm1:FindFirstChild("Attachment")
+            if attachment then
+                local proximityPrompt = attachment:FindFirstChildOfClass("ProximityPrompt")
+                if proximityPrompt and proximityPrompt.Enabled then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+    if isATMEnabled() then
+        while (target - currentPosition).magnitude > distanceThreshold do
+            local direction = (target - currentPosition).unit
+            local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+            if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+                humanoidRootPart.CFrame = CFrame.new(newPosition)
+            else
+                humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+                break  -- Exit the loop if we've reached the target position
+            end
+            wait(0.1)  -- Adjust wait time as needed
+            currentPosition = humanoidRootPart.Position
+        end
+        print("Teleportation to target position completed!")
+    else
+        print("ATM is not enabled, teleportation aborted.")
+    end
+end
+teleportTo(targetPosition)
+
+        elseif item == 2 then
+            local targetPosition = Vector3.new(538.3597412109375, 3.7636241912841797, -350.0778503417969)  -- Replace with your desired coordinates
+local function isATMEnabled()
+    local workspace = game:GetService("Workspace")
+    local atmFolder = workspace:FindFirstChild("ATMS")
+    if atmFolder then
+        local atm1 = atmFolder:FindFirstChild("ATM2")
+        if atm1 then
+            local attachment = atm1:FindFirstChild("Attachment")
+            if attachment then
+                local proximityPrompt = attachment:FindFirstChildOfClass("ProximityPrompt")
+                if proximityPrompt and proximityPrompt.Enabled then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+    if isATMEnabled() then
+        while (target - currentPosition).magnitude > distanceThreshold do
+            local direction = (target - currentPosition).unit
+            local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+            if (newPosition - target).magnitude < (currentPosition - target).magnitude then
+                humanoidRootPart.CFrame = CFrame.new(newPosition)
+            else
+                humanoidRootPart.CFrame = CFrame.new(target)  -- Set directly to the target position
+                break  -- Exit the loop if we've reached the target position
+            end
+            wait(0.1)  -- Adjust wait time as needed
+            currentPosition = humanoidRootPart.Position
+        end
+        print("Teleportation to target position completed!")
+    else
+        print("ATM is not enabled, teleportation aborted.")
+    end
+end
+teleportTo(targetPosition)
+
+        elseif item == 3 then
+local targetPosition = Vector3.new(497.42108154296875, 3.783940315246582, 405.0294189453125)  -- Replace with your desired coordinates
+local function isATMEnabled()
+    local workspace = game:GetService("Workspace")
+    local atmFolder = workspace:FindFirstChild("ATMS")
+    if atmFolder then
+        local atm1 = atmFolder:FindFirstChild("ATM3")
+        if atm1 then
+            local attachment = atm1:FindFirstChild("Attachment")
+            if attachment then
+                local proximityPrompt = attachment:FindFirstChildOfClass("ProximityPrompt")
+                if proximityPrompt and proximityPrompt.Enabled then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+local function teleportTo(target)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local currentPosition = humanoidRootPart.Position
+    local distanceThreshold = 0.1  -- Adjust as needed, determines when to stop teleporting
+    if isATMEnabled() then
+        while (target - currentPosition).magnitude > distanceThreshold do
+            local direction = (target - currentPosition).unit
+            local newPosition = currentPosition + direction * 3.4  -- Adjust increment size
+            if (newPosition - target).magnitude < (currentPosition - target).mag
