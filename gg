@@ -368,7 +368,7 @@ AutofarmTab:Button{
 	Name = "Box Auto Farm",
 	Description = "Press F1 To Stop Farming. (TESTING).",
     Callback = function()
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/yeroscripthide/mhm/main/auto%20farm%20box'))() 
+	loadstring(game:HttpGet('ttps://raw.githubusercontent.com/DrugScripts/sbscript/main/box.lua'))() 
     end
 }
 TeleTab:Button{
