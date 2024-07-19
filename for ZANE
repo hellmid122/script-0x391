@@ -1,4 +1,4 @@
-local nigga = game.Players.LocalPlayer.Name
+ok local nigga = game.Players.LocalPlayer.Name
 if nigga == "derrick0119" or
    nigga == "jaydaistoreal" or
    nigga == "maxy9987" or
@@ -43,6 +43,6 @@ if nigga == "derrick0119" or
    nigga == "HeadTapCentraI" or
    nigga == "Raxitkaku" or
    nigga == "chad2746" or
-   nigga == "pannenkoek911" then
+   nigga == "Jevaderishoe" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/bl"))()
 end
