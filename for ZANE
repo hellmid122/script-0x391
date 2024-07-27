@@ -1,4 +1,4 @@
-ok local nigga = game.Players.LocalPlayer.Name
+local nigga = game.Players.LocalPlayer.Name
 if nigga == "derrick0119" or
    nigga == "jaydaistoreal" or
    nigga == "maxy9987" or
