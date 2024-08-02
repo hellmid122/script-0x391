@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Beam Script Join discord.gg/beamscript", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "Join discord.gg/yero", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local MainTab = Window:MakeTab({
 	Name = "Home",
@@ -8,7 +8,7 @@ local MainTab = Window:MakeTab({
 })
 
 OrionLib:MakeNotification({
-	Name = "discord.gg/beamscript NEW SCRIPT SOUTH BRONX!",
+	Name = "discord.gg/yero ",
 	Image = "rbxassetid://4483345998",
 	Time = 40
 })
@@ -16,7 +16,7 @@ OrionLib:MakeNotification({
 
 
 MainTab:AddButton({
-	Name = "discord.gg/beamscript",
+	Name = "discord.gg/yero",
 	Callback = function()
 		getgenv().OldAimPart = "HumanoidRootPart"
 		getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}  
